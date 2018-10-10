@@ -1,7 +1,7 @@
 .grid { margin:1em auto; border-collapse:collapse }
 .grid td.starred {
     cursor:pointer;
-    width:30px; height:30px;
+    width:60px; height:60px;
     border:1px solid #ccc;
     text-align:center;
     font-family:sans-serif; font-size:13px;
@@ -10,11 +10,42 @@
 }
 .grid td.notStarred {
     cursor:pointer;
-    width:30px; height:30px;
+    width:60px; height:60px;
     border:1px solid #ccc;
     text-align:center;
     font-family:sans-serif; font-size:13px;
     color: white;
     background-color: black;
 }
+
+.grid td.notStarred.red {
+    background-color: red
+}
+
+.grid td.notStarred.blue {
+    background-color: blue
+}
+
+grid td.notStarred.green{
+    background-color: aqua
+}
+
+grid td.notStarred.chartreuse{
+    background-color: chartreuse
+}
+
+grid td.notStarred.darkmagenta{
+    background-color: darkmagenta
+}
+
+grid td.notStarred.forestgreen{
+    background-color: forestgreen
+}
+
+grid td.notStarred.orange{
+    background-color: orange
+}
     
+grid td.notStarred.papayawhip{
+    background-color: papayawhip
+}
