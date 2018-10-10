@@ -147,6 +147,8 @@ let gridSubsectionBuilder = puzzle => {
             document.getElementById(target).classList.add(color)
         }
     }
+    console.log('color finished')
+    return null
 }
 
 

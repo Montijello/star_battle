@@ -18,34 +18,34 @@
     background-color: black;
 }
 
-.grid td.notStarred.red {
+.grid td.red {
     background-color: red
 }
 
-.grid td.notStarred.blue {
+.grid td.blue {
     background-color: blue
 }
 
-grid td.notStarred.green{
-    background-color: aqua
+grid td.yellow{
+    background-color: yellow
 }
 
-grid td.notStarred.chartreuse{
+grid td.chartreuse{
     background-color: chartreuse
 }
 
-grid td.notStarred.darkmagenta{
+grid td.darkmagenta{
     background-color: darkmagenta
 }
 
-grid td.notStarred.forestgreen{
+grid td.forestgreen{
     background-color: forestgreen
 }
 
-grid td.notStarred.orange{
+grid td.orange{
     background-color: orange
 }
     
-grid td.notStarred.papayawhip{
+grid td.papayawhip{
     background-color: papayawhip
 }

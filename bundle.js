@@ -148,6 +148,8 @@ let gridSubsectionBuilder = puzzle => {
             document.getElementById(target).classList.add(color)
         }
     }
+    console.log('color finished')
+    return null
 }
 
 
@@ -165,32 +167,35 @@ module.exports = {
 const { isStarAllowed, gridSubsectionBuilder } = require('./functions.js')
 const { puzzleOne } = require('./puzzles.js')
 
-
 let grid = clickableGrid(8, 8, function (element, row, col, index) {
     // console.log("You clicked on element:", element);
     // console.log("You clicked on row:", row);
     // console.log("You clicked on col:", col);
     // console.log("You clicked on index #:", index);
     // console.log(element.id)
+    
+    console.log('before color')
+    gridSubsectionBuilder(puzzleOne)
 
-    // gridSubsectionBuilder(puzzleOne);
+
+   
 
 
-    // when clicked, first check if box is starred
-    // if it is go ahead and remove star, no questions asked
-    if (element.classList.contains('starred')) {
-        element.classList.replace('starred', 'notStarred')
+    // // when clicked, first check if box is starred
+    // // if it is go ahead and remove star, no questions asked
+    // if (element.classList.contains('starred')) {
+    //     element.classList.replace('starred', 'notStarred')
 
-        // if there is no star, check to see if it's a legal placement
-        // if it is, add one
-    } else if (isStarAllowed(element)) {
-        element.classList.replace('notStarred', 'starred')
+    //     // if there is no star, check to see if it's a legal placement
+    //     // if it is, add one
+    // } else if (isStarAllowed(element)) {
+    //     element.classList.replace('notStarred', 'starred')
 
-        // this is what will happen if you try an illegal placement
-        // it'd be good to make grid square flash red
-    } else {
-        alert('no go')
-    }
+    //     // this is what will happen if you try an illegal placement
+    //     // it'd be good to make grid square flash red
+    // } else {
+    //     alert('no go')
+    // }
 });
 
 document.body.appendChild(grid);
@@ -221,7 +226,7 @@ const { layoutCheck } = require('./functions.js')
 puzzleOne = {
     red: [1, 2, 9, 10],
     blue: [5, 6, 14, 22],
-    aqua: [8, 16, 24, 32],
+    yellow: [8, 16, 24, 32],
     chartreuse: [33, 34, 26, 27],
     darkmagenta: [57, 58, 59, 50],
     forestgreen: [48, 56, 64, 63],
@@ -231,8 +236,7 @@ puzzleOne = {
 }
 
 
-// test arguments are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-
+// the layoutCheck args are (puzzleName, heightOfPuzzle, widthOfPuzzle)
 //layoutCheck(puzzleOne, 8, 8)
 
 module.exports = {

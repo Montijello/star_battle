@@ -3,7 +3,7 @@ const { layoutCheck } = require('./functions.js')
 puzzleOne = {
     red: [1, 2, 9, 10],
     blue: [5, 6, 14, 22],
-    aqua: [8, 16, 24, 32],
+    yellow: [8, 16, 24, 32],
     chartreuse: [33, 34, 26, 27],
     darkmagenta: [57, 58, 59, 50],
     forestgreen: [48, 56, 64, 63],
@@ -13,8 +13,7 @@ puzzleOne = {
 }
 
 
-// test arguments are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-
+// the layoutCheck args are (puzzleName, heightOfPuzzle, widthOfPuzzle)
 //layoutCheck(puzzleOne, 8, 8)
 
 module.exports = {
