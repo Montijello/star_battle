@@ -16,11 +16,19 @@ const isStarAllowed = (element) => {
         const itemToCheck = document.getElementById(indexToCheck)
         if (indexToCheck !== id) {
             if (itemToCheck.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                itemToCheck.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    itemToCheck.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
         }
     }
-    console.log('The column has passed')
 
 
 
@@ -33,12 +41,19 @@ const isStarAllowed = (element) => {
         const itemToCheck = document.getElementById(indexToCheck)
         if (indexToCheck !== id) {
             if (itemToCheck.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                itemToCheck.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    itemToCheck.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
         }
     }
-
-    console.log('The row has passed')
 
 
     // Check each item in a block for a star
@@ -46,67 +61,107 @@ const isStarAllowed = (element) => {
     let colorblock = document.querySelectorAll(color)
     for (let i = 0; i < colorblock.length; i++) {
         if (colorblock[i].classList.contains('starred')) {
+            element.classList.add('wrongAnswer')
+            colorblock[i].classList.add('wrongAnswer')
+            setTimeout(function(){
+                colorblock[i].classList.remove('wrongAnswer');
+            },1000);
+            setTimeout(function(){
+                element.classList.remove('wrongAnswer');
+            },1000);
+
             return false
         }
     }
 
-    console.log('The color has passed')
 
 
 
 
   
     const topRight = document.getElementById(id - 7)
-    const topLeft = document.getElementById(id - 8)
+    const topLeft = document.getElementById(id - 9)
     const bottomLeft = document.getElementById(id + 7)
     const bottomRight = document.getElementById(id + 9)
    
     // const topLeft = (element row - 1) * 8 + (element col - 1)
+    
     // const row = "classList[0][1]"
     // const col = "classList[1][1]"
-
-
 
     // Check the four corners for a star
     if(topRight !== null){
     if (Number(topRight.classList[0][1]) === Number(element.classList[0][1]) - 1
         && Number(topRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (topRight.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                topRight.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    topRight.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
 
-
-    if(topLeft !== null){
+if(topLeft !== null){
     if (Number(topLeft.classList[0][1]) === Number(element.classList[0][1]) - 1
         && Number(topLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (topLeft.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                topLeft.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    topLeft.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
 
 
-    if(bottomLeft !== null){
+if(bottomLeft !== null){
     if (Number(bottomLeft.classList[0][1]) === Number(element.classList[0][1]) + 1
         && Number(bottomLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (bottomLeft.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                bottomLeft.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    bottomLeft.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
 
-    if(bottomRight !== null){
+if(bottomRight !== null){
     if (Number(bottomRight.classList[0][1]) === Number(element.classList[0][1]) + 1
         && Number(bottomRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (bottomRight.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                bottomRight.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    bottomRight.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
-    
-    console.log('The corners have passed');
     return true
 }
 

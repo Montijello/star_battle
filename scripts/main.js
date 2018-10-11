@@ -1,5 +1,5 @@
 const { isStarAllowed, gridSubsectionBuilder } = require('./functions.js')
-const { puzzleOne, puzzleTwo } = require('./puzzles.js')
+const { puzzles } = require('./puzzles.js')
 
 let grid = clickableGrid(8, 8, function (element, row, col, index) {
     // console.log("You clicked on element:", element);
@@ -23,13 +23,16 @@ let grid = clickableGrid(8, 8, function (element, row, col, index) {
     } else if (isStarAllowed(element)) {
         element.classList.replace('notStarred', 'starred')
         if(document.querySelectorAll('td.starred').length === 8){
-            alert('youwin!')
+            let date = JSON.stringify(new Date())
+            date = date.slice(1, 11)
+            localStorage.setItem('gameWon', date)
+            alert('Congratulations! Play Again?')
         }
 
         // this is what will happen if you try an illegal placement
         // it'd be good to make grid square flash red
     } else {
-        alert('no go')
+       // alert('no go')
     }
 });
 
@@ -43,7 +46,7 @@ function clickableGrid(rows, cols, callback) {
         for (let c = 0; c < cols; ++c) {
             let cell = tr.appendChild(document.createElement('td'));
             cell.id = ++index;
-            cell.innerHTML = index;
+            // cell.innerHTML = index;
             cell.classList.add(`r${r}`, `c${c}`, 'notStarred');
             cell.addEventListener('click', (function (element, r, c, index) {
                 return function () {
@@ -56,4 +59,10 @@ function clickableGrid(rows, cols, callback) {
 }
 
 document.body.appendChild(grid);
-gridSubsectionBuilder(puzzleTwo)
+
+function randomPuzzle(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+// i should equal the number of puzzles made passed into randomPuzzle
+let i = randomPuzzle(3);
+gridSubsectionBuilder(puzzles[i]);

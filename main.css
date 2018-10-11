@@ -9,37 +9,54 @@
 }
 
 .grid td.red {
-    background-color: red
+    background-color: red;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 
 .grid td.blue {
-    background-color: blue
+    background-color: blue;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 
 .grid td.cornflowerblue{
-    background-color: cornflowerblue
+    background-color: cornflowerblue;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 
 .grid td.chartreuse{
-    background-color: chartreuse
+    background-color: chartreuse;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 
 .grid td.darkmagenta{
-    background-color: darkmagenta
+    background-color: darkmagenta;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 
 .grid td.forestgreen{
-    background-color: forestgreen
+    background-color: forestgreen;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
 
 .grid td.orange{
-    background-color: orange
+    background-color: orange;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
     
 .grid td.whitesmoke{
     background-color: whitesmoke;
     color: black;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
 }
+
 
 .grid { margin:1em auto; border-collapse:collapse }
 .grid td.starred {
@@ -50,4 +67,8 @@
     font-family:sans-serif; font-size:13px;
     color: black;
     background-color: yellow;
+}
+
+.grid td.wrongAnswer{
+    background-color: black;
 }

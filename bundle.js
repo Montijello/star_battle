@@ -17,11 +17,19 @@ const isStarAllowed = (element) => {
         const itemToCheck = document.getElementById(indexToCheck)
         if (indexToCheck !== id) {
             if (itemToCheck.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                itemToCheck.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    itemToCheck.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
         }
     }
-    console.log('The column has passed')
 
 
 
@@ -34,12 +42,19 @@ const isStarAllowed = (element) => {
         const itemToCheck = document.getElementById(indexToCheck)
         if (indexToCheck !== id) {
             if (itemToCheck.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                itemToCheck.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    itemToCheck.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
         }
     }
-
-    console.log('The row has passed')
 
 
     // Check each item in a block for a star
@@ -47,67 +62,107 @@ const isStarAllowed = (element) => {
     let colorblock = document.querySelectorAll(color)
     for (let i = 0; i < colorblock.length; i++) {
         if (colorblock[i].classList.contains('starred')) {
+            element.classList.add('wrongAnswer')
+            colorblock[i].classList.add('wrongAnswer')
+            setTimeout(function(){
+                colorblock[i].classList.remove('wrongAnswer');
+            },1000);
+            setTimeout(function(){
+                element.classList.remove('wrongAnswer');
+            },1000);
+
             return false
         }
     }
 
-    console.log('The color has passed')
 
 
 
 
   
     const topRight = document.getElementById(id - 7)
-    const topLeft = document.getElementById(id - 8)
+    const topLeft = document.getElementById(id - 9)
     const bottomLeft = document.getElementById(id + 7)
     const bottomRight = document.getElementById(id + 9)
    
     // const topLeft = (element row - 1) * 8 + (element col - 1)
+    
     // const row = "classList[0][1]"
     // const col = "classList[1][1]"
-
-
 
     // Check the four corners for a star
     if(topRight !== null){
     if (Number(topRight.classList[0][1]) === Number(element.classList[0][1]) - 1
         && Number(topRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (topRight.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                topRight.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    topRight.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
 
-
-    if(topLeft !== null){
+if(topLeft !== null){
     if (Number(topLeft.classList[0][1]) === Number(element.classList[0][1]) - 1
         && Number(topLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (topLeft.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                topLeft.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    topLeft.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
 
 
-    if(bottomLeft !== null){
+if(bottomLeft !== null){
     if (Number(bottomLeft.classList[0][1]) === Number(element.classList[0][1]) + 1
         && Number(bottomLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (bottomLeft.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                bottomLeft.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    bottomLeft.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
 
-    if(bottomRight !== null){
+if(bottomRight !== null){
     if (Number(bottomRight.classList[0][1]) === Number(element.classList[0][1]) + 1
         && Number(bottomRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (bottomRight.classList.contains('starred')) {
+                element.classList.add('wrongAnswer')
+                bottomRight.classList.add('wrongAnswer')
+                setTimeout(function(){
+                    bottomRight.classList.remove('wrongAnswer');
+                },1000);
+                setTimeout(function(){
+                    element.classList.remove('wrongAnswer');
+                },1000);
+
                 return false
             }
     }
 }
-    
-    console.log('The corners have passed');
     return true
 }
 
@@ -201,7 +256,7 @@ module.exports = {
 }
 },{}],2:[function(require,module,exports){
 const { isStarAllowed, gridSubsectionBuilder } = require('./functions.js')
-const { puzzleOne, puzzleTwo } = require('./puzzles.js')
+const { puzzles } = require('./puzzles.js')
 
 let grid = clickableGrid(8, 8, function (element, row, col, index) {
     // console.log("You clicked on element:", element);
@@ -225,13 +280,16 @@ let grid = clickableGrid(8, 8, function (element, row, col, index) {
     } else if (isStarAllowed(element)) {
         element.classList.replace('notStarred', 'starred')
         if(document.querySelectorAll('td.starred').length === 8){
-            alert('youwin!')
+            let date = JSON.stringify(new Date())
+            date = date.slice(1, 11)
+            localStorage.setItem('gameWon', date)
+            alert('Congratulations! Play Again?')
         }
 
         // this is what will happen if you try an illegal placement
         // it'd be good to make grid square flash red
     } else {
-        alert('no go')
+       // alert('no go')
     }
 });
 
@@ -245,7 +303,7 @@ function clickableGrid(rows, cols, callback) {
         for (let c = 0; c < cols; ++c) {
             let cell = tr.appendChild(document.createElement('td'));
             cell.id = ++index;
-            cell.innerHTML = index;
+            // cell.innerHTML = index;
             cell.classList.add(`r${r}`, `c${c}`, 'notStarred');
             cell.addEventListener('click', (function (element, r, c, index) {
                 return function () {
@@ -258,7 +316,13 @@ function clickableGrid(rows, cols, callback) {
 }
 
 document.body.appendChild(grid);
-gridSubsectionBuilder(puzzleTwo)
+
+function randomPuzzle(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+// i should equal the number of puzzles made passed into randomPuzzle
+let i = randomPuzzle(3);
+gridSubsectionBuilder(puzzles[i]);
 },{"./functions.js":1,"./puzzles.js":3}],3:[function(require,module,exports){
 const { layoutCheck } = require('./functions.js')
 
@@ -287,11 +351,26 @@ puzzleTwo = {
     whitesmoke: [29, 36, 37],
 }
 
+puzzleThree = {
+    red: [7, 8, 12, 13, 14, 15, 20, 21, 22, 28, 34, 35, 36, 37, 45, 53],
+    blue: [1, 2, 3, 4, 5, 6, 9, 10],
+    cornflowerblue: [16, 23, 24],
+    chartreuse: [17, 18, 25, 33, 41, 42, 43],
+    darkmagenta: [44, 49, 50, 51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64],
+    forestgreen: [11, 19, 26, 27],
+    orange: [38, 46, 47, 32, 40, 48],
+    whitesmoke: [29, 30, 31, 39],
+}
+
+let puzzles = [puzzleOne, puzzleTwo, puzzleThree];
+
+
 
 // the layoutCheck args are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-// layoutCheck(puzzleTwo, 8, 8)
+// run node on puzzles.js, the test output is written to console
+layoutCheck(puzzleThree, 8, 8)
 
 module.exports = {
-    puzzleOne, puzzleTwo
+    puzzles
 }
 },{"./functions.js":1}]},{},[2]);

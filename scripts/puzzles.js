@@ -25,10 +25,25 @@ puzzleTwo = {
     whitesmoke: [29, 36, 37],
 }
 
+puzzleThree = {
+    red: [7, 8, 12, 13, 14, 15, 20, 21, 22, 28, 34, 35, 36, 37, 45, 53],
+    blue: [1, 2, 3, 4, 5, 6, 9, 10],
+    cornflowerblue: [16, 23, 24],
+    chartreuse: [17, 18, 25, 33, 41, 42, 43],
+    darkmagenta: [44, 49, 50, 51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64],
+    forestgreen: [11, 19, 26, 27],
+    orange: [38, 46, 47, 32, 40, 48],
+    whitesmoke: [29, 30, 31, 39],
+}
+
+let puzzles = [puzzleOne, puzzleTwo, puzzleThree];
+
+
 
 // the layoutCheck args are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-// layoutCheck(puzzleTwo, 8, 8)
+// run node on puzzles.js, the test output is written to console
+layoutCheck(puzzleThree, 8, 8)
 
 module.exports = {
-    puzzleOne, puzzleTwo
+    puzzles
 }
