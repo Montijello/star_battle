@@ -84,10 +84,6 @@ const isStarAllowed = (element) => {
     const bottomLeft = document.getElementById(id + 7)
     const bottomRight = document.getElementById(id + 9)
    
-    // const topLeft = (element row - 1) * 8 + (element col - 1)
-    
-    // const row = "classList[0][1]"
-    // const col = "classList[1][1]"
 
     // Check the four corners for a star
     if(topRight !== null){
@@ -173,7 +169,7 @@ if(bottomRight !== null){
 
 
 
-
+// function that reads the puzzle and applies style specified to naked grid
 let gridSubsectionBuilder = puzzle => {
     for (let color in puzzle) {
         for (let i = 0; i < puzzle[color].length; i++) {
@@ -206,13 +202,13 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
 
     let actualGridSize = 0
     let expectedGridSize = columnHeight * rowWidth
-    console.log(`Correct grid size: ${expectedGridSize}`)
+    //(`Correct grid size: ${expectedGridSize}`)
 
     // first test - checking the number of targeted squares against the grid size
     for (let color in puzzle) {
         actualGridSize += puzzle[color].length
     }
-    console.log(`Actual size: ${actualGridSize}`)
+    //(`Actual size: ${actualGridSize}`)
 
 
     // second test - checking the sum of id numbers targeted
@@ -221,7 +217,7 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
     for (let i = 1; i <= expectedGridSize; i++) {
         expectedIDsum += i
     }
-    console.log(`Correct Value: ${expectedIDsum}`)
+    //(`Correct Value: ${expectedIDsum}`)
 
     // part-2 - add all the numbers that have been targeted for styling
     let actualIDsum = 0
@@ -230,15 +226,15 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
             actualIDsum += puzzle[color][i]
         }
     }
-    console.log(`Actual Value: ${actualIDsum}`)
+    //(`Actual Value: ${actualIDsum}`)
 
 
-    // console logs whether or not the tests passed
+    // logs whether or not the tests passed
     if (expectedIDsum === actualIDsum && expectedGridSize === actualGridSize) {
-        console.log('Right on the money')
+    //('Right on the money')
     }
     else {
-        console.log(`You are ${expectedIDsum - actualIDsum} off`)
+    //(`You are ${expectedIDsum - actualIDsum} off`)
     }
 }
 

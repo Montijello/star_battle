@@ -85,10 +85,6 @@ const isStarAllowed = (element) => {
     const bottomLeft = document.getElementById(id + 7)
     const bottomRight = document.getElementById(id + 9)
    
-    // const topLeft = (element row - 1) * 8 + (element col - 1)
-    
-    // const row = "classList[0][1]"
-    // const col = "classList[1][1]"
 
     // Check the four corners for a star
     if(topRight !== null){
@@ -174,7 +170,7 @@ if(bottomRight !== null){
 
 
 
-
+// function that reads the puzzle and applies style specified to naked grid
 let gridSubsectionBuilder = puzzle => {
     for (let color in puzzle) {
         for (let i = 0; i < puzzle[color].length; i++) {
@@ -207,13 +203,13 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
 
     let actualGridSize = 0
     let expectedGridSize = columnHeight * rowWidth
-    console.log(`Correct grid size: ${expectedGridSize}`)
+    //(`Correct grid size: ${expectedGridSize}`)
 
     // first test - checking the number of targeted squares against the grid size
     for (let color in puzzle) {
         actualGridSize += puzzle[color].length
     }
-    console.log(`Actual size: ${actualGridSize}`)
+    //(`Actual size: ${actualGridSize}`)
 
 
     // second test - checking the sum of id numbers targeted
@@ -222,7 +218,7 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
     for (let i = 1; i <= expectedGridSize; i++) {
         expectedIDsum += i
     }
-    console.log(`Correct Value: ${expectedIDsum}`)
+    //(`Correct Value: ${expectedIDsum}`)
 
     // part-2 - add all the numbers that have been targeted for styling
     let actualIDsum = 0
@@ -231,15 +227,15 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
             actualIDsum += puzzle[color][i]
         }
     }
-    console.log(`Actual Value: ${actualIDsum}`)
+    //(`Actual Value: ${actualIDsum}`)
 
 
-    // console logs whether or not the tests passed
+    // logs whether or not the tests passed
     if (expectedIDsum === actualIDsum && expectedGridSize === actualGridSize) {
-        console.log('Right on the money')
+    //('Right on the money')
     }
     else {
-        console.log(`You are ${expectedIDsum - actualIDsum} off`)
+    //(`You are ${expectedIDsum - actualIDsum} off`)
     }
 }
 
@@ -258,42 +254,56 @@ module.exports = {
 const { isStarAllowed, gridSubsectionBuilder } = require('./functions.js')
 const { puzzles } = require('./puzzles.js')
 
-let grid = clickableGrid(8, 8, function (element, row, col, index) {
-    // console.log("You clicked on element:", element);
-    // console.log("You clicked on row:", row);
-    // console.log("You clicked on col:", col);
-    // console.log("You clicked on index #:", index);
-    // console.log(element.id)
-    
+
+let grid = clickableGrid(8, 8, function (element) {
 
 
-   
 
-
-    // // when clicked, first check if box is starred
-    // // if it is go ahead and remove star, no questions asked
+    //  on click, check if box is starred
+    //  if so remove star, no questions asked
     if (element.classList.contains('starred')) {
         element.classList.replace('starred', 'notStarred')
 
-        // if there is no star, check to see if it's a legal placement
-        // if it is, add one
-    } else if (isStarAllowed(element)) {
-        element.classList.replace('notStarred', 'starred')
-        if(document.querySelectorAll('td.starred').length === 8){
-            let date = JSON.stringify(new Date())
-            date = date.slice(1, 11)
-            localStorage.setItem('gameWon', date)
-            alert('Congratulations! Play Again?')
-        }
 
-        // this is what will happen if you try an illegal placement
-        // it'd be good to make grid square flash red
+        // if  no star, check to see if it's a legal placement
+        // if it is, add one
     } else {
-       // alert('no go')
+        if (isStarAllowed(element)) {
+            element.classList.replace('notStarred', 'starred')
+            if (document.querySelectorAll('td.starred').length === 8) {
+                switch (localStorage.getItem('gamesWon')) {
+                    case '2':
+                        localStorage.setItem('gamesWon', '0');
+                        alert("You must be some kind of genius. Want to go again?")
+                        window.location.reload();
+                        break;
+                    case '1':
+                        localStorage.setItem('gamesWon', '2');
+                        alert("One more to go, are you ready for it?")
+                        window.location.reload();
+                        break;
+                    default:
+                        localStorage.setItem('gamesWon', '1');
+                        alert("That was the easy one, ready to step it up?")
+                        window.location.reload();
+                        break;
+                }
+            
+
+
+            // get complted puzzles
+            // if c
+            // add i - current puzzle
+            // generate new puzzle
+        }
     }
+}
 });
 
 
+
+// creates clickable grid as a table, appends it to the document body
+// rows and columns and cells start count from 1
 function clickableGrid(rows, cols, callback) {
     let index = 0;
     let grid = document.createElement('table');
@@ -303,7 +313,6 @@ function clickableGrid(rows, cols, callback) {
         for (let c = 0; c < cols; ++c) {
             let cell = tr.appendChild(document.createElement('td'));
             cell.id = ++index;
-            // cell.innerHTML = index;
             cell.classList.add(`r${r}`, `c${c}`, 'notStarred');
             cell.addEventListener('click', (function (element, r, c, index) {
                 return function () {
@@ -317,16 +326,31 @@ function clickableGrid(rows, cols, callback) {
 
 document.body.appendChild(grid);
 
-function randomPuzzle(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-// i should equal the number of puzzles made passed into randomPuzzle
-let i = randomPuzzle(3);
+// function randomPuzzle(max) {
+//     return Math.floor(Math.random() * Math.floor(max));
+// }
+
+
+// // i should equal the number of puzzles in puzzle file
+//let i = randomPuzzle(puzzles.length);
+
+let i = 0
+if(localStorage.getItem('gamesWon')){
+    i = localStorage.getItem('gamesWon');
+    i = Number(i); 
+}
+
 gridSubsectionBuilder(puzzles[i]);
+// for(let key in puzzles){
+//     for(let i = 0; i < puzzles.length; i++){
+//         console.log(puzzles[key][i])
+//     }
+// }
+
 },{"./functions.js":1,"./puzzles.js":3}],3:[function(require,module,exports){
 const { layoutCheck } = require('./functions.js')
 
-// by drsudoku (Thomas Snyder) gmpuzzles.com
+// credit: Thomas Snyder
 puzzleOne = {
     red: [1, 2, 9, 10],
     blue: [5, 6, 14, 22],
@@ -335,11 +359,11 @@ puzzleOne = {
     darkmagenta: [57, 58, 59, 50],
     forestgreen: [48, 56, 64, 63],
     orange: [53, 45, 46, 38],
-    whitesmoke: [3, 4, 7, 11, 12, 13, 15, 17, 18, 19, 20, 21, 23, 25, 28, 29, 30, 31, 35, 36, 37, 39,
+    grey: [3, 4, 7, 11, 12, 13, 15, 17, 18, 19, 20, 21, 23, 25, 28, 29, 30, 31, 35, 36, 37, 39,
         40, 41, 42, 43, 44, 47, 49, 51, 52, 54, 55, 60, 61, 62]
 }
 
-// by drsudoku (Thomas Snyder) gmpuzzles.com
+// credit: Thomas Snyder
 puzzleTwo = {
     red: [1, 2, 3, 4, 5, 6, 7, 15, 23, 31],
     blue: [8, 16, 24, 32, 40, 48, 56, 64, 63, 62, 61, 60, 59, 58, 57, 49, 41, 33, 25, 17, 9],
@@ -348,9 +372,10 @@ puzzleTwo = {
     darkmagenta: [26, 18, 19, 20, 21],
     forestgreen: [34, 42, 50, 51],
     orange: [52, 53, 54, 55, 47, 39],
-    whitesmoke: [29, 36, 37],
+    grey: [29, 36, 37],
 }
 
+// credit: Thomas Snyder
 puzzleThree = {
     red: [7, 8, 12, 13, 14, 15, 20, 21, 22, 28, 34, 35, 36, 37, 45, 53],
     blue: [1, 2, 3, 4, 5, 6, 9, 10],
@@ -359,16 +384,15 @@ puzzleThree = {
     darkmagenta: [44, 49, 50, 51, 52, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64],
     forestgreen: [11, 19, 26, 27],
     orange: [38, 46, 47, 32, 40, 48],
-    whitesmoke: [29, 30, 31, 39],
+    grey: [29, 30, 31, 39],
 }
 
 let puzzles = [puzzleOne, puzzleTwo, puzzleThree];
 
 
 
-// the layoutCheck args are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-// run node on puzzles.js, the test output is written to console
-layoutCheck(puzzleThree, 8, 8)
+// the layoutCheck parameters are (puzzleName, heightOfPuzzle, widthOfPuzzle)
+// layoutCheck(puzzleThree, 8, 8)
 
 module.exports = {
     puzzles
