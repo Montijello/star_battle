@@ -3,6 +3,7 @@
 ### ABOUT THIS PROJECT
 
 Just a little puzzle game
+Play online at http://starbattle.surge.sh/
 
 ### TO PLAY
 Click on a grid square to place a star
