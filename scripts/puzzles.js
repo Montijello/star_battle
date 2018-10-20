@@ -1,6 +1,6 @@
 const { layoutCheck } = require('./functions.js')
 
-// credit: Thomas Snyder
+// layout credit: Thomas Snyder
 puzzleOne = {
     red: [1, 2, 9, 10],
     blue: [5, 6, 14, 22],
@@ -13,7 +13,7 @@ puzzleOne = {
         40, 41, 42, 43, 44, 47, 49, 51, 52, 54, 55, 60, 61, 62]
 }
 
-// credit: Thomas Snyder
+// layout credit: Thomas Snyder
 puzzleTwo = {
     red: [1, 2, 3, 4, 5, 6, 7, 15, 23, 31],
     blue: [8, 16, 24, 32, 40, 48, 56, 64, 63, 62, 61, 60, 59, 58, 57, 49, 41, 33, 25, 17, 9],
@@ -25,7 +25,7 @@ puzzleTwo = {
     grey: [29, 36, 37],
 }
 
-// credit: Thomas Snyder
+// layout credit: Thomas Snyder
 puzzleThree = {
     red: [7, 8, 12, 13, 14, 15, 20, 21, 22, 28, 34, 35, 36, 37, 45, 53],
     blue: [1, 2, 3, 4, 5, 6, 9, 10],
@@ -38,11 +38,6 @@ puzzleThree = {
 }
 
 let puzzles = [puzzleOne, puzzleTwo, puzzleThree];
-
-
-
-// the layoutCheck parameters are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-// layoutCheck(puzzleThree, 8, 8)
 
 module.exports = {
     puzzles

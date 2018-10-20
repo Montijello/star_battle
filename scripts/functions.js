@@ -18,19 +18,16 @@ const isStarAllowed = (element) => {
             if (itemToCheck.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 itemToCheck.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     itemToCheck.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
-                return false
+                }, 1000);
+                return false;
             }
         }
     }
-
-
 
     const currentColStart = 0
     const currentColEnd = colSize
@@ -43,18 +40,16 @@ const isStarAllowed = (element) => {
             if (itemToCheck.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 itemToCheck.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     itemToCheck.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
         }
     }
-
 
     // Check each item in a block for a star
     let color = `td.${element.classList[3]}`
@@ -63,111 +58,91 @@ const isStarAllowed = (element) => {
         if (colorblock[i].classList.contains('starred')) {
             element.classList.add('wrongAnswer')
             colorblock[i].classList.add('wrongAnswer')
-            setTimeout(function(){
+            setTimeout(function () {
                 colorblock[i].classList.remove('wrongAnswer');
-            },1000);
-            setTimeout(function(){
+            }, 1000);
+            setTimeout(function () {
                 element.classList.remove('wrongAnswer');
-            },1000);
-
+            }, 1000);
             return false
         }
     }
 
-
-
-
-
-  
     const topRight = document.getElementById(id - 7)
     const topLeft = document.getElementById(id - 9)
     const bottomLeft = document.getElementById(id + 7)
     const bottomRight = document.getElementById(id + 9)
-   
 
     // Check the four corners for a star
-    if(topRight !== null){
-    if (Number(topRight.classList[0][1]) === Number(element.classList[0][1]) - 1
-        && Number(topRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
+    if (topRight !== null) {
+        if (Number(topRight.classList[0][1]) === Number(element.classList[0][1]) - 1
+            && Number(topRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (topRight.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 topRight.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     topRight.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
 
-if(topLeft !== null){
-    if (Number(topLeft.classList[0][1]) === Number(element.classList[0][1]) - 1
-        && Number(topLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
+    if (topLeft !== null) {
+        if (Number(topLeft.classList[0][1]) === Number(element.classList[0][1]) - 1
+            && Number(topLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (topLeft.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 topLeft.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     topLeft.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
 
-
-if(bottomLeft !== null){
-    if (Number(bottomLeft.classList[0][1]) === Number(element.classList[0][1]) + 1
-        && Number(bottomLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
+    if (bottomLeft !== null) {
+        if (Number(bottomLeft.classList[0][1]) === Number(element.classList[0][1]) + 1
+            && Number(bottomLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (bottomLeft.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 bottomLeft.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     bottomLeft.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
 
-if(bottomRight !== null){
-    if (Number(bottomRight.classList[0][1]) === Number(element.classList[0][1]) + 1
-        && Number(bottomRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
+    if (bottomRight !== null) {
+        if (Number(bottomRight.classList[0][1]) === Number(element.classList[0][1]) + 1
+            && Number(bottomRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (bottomRight.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 bottomRight.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     bottomRight.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
     return true
 }
-
-
-
-
-
-
-
-
 
 // function that reads the puzzle and applies style specified to naked grid
 let gridSubsectionBuilder = puzzle => {
@@ -179,20 +154,6 @@ let gridSubsectionBuilder = puzzle => {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // expects a puzzle object, and the height, and width of the tested puzzle
 // checks the validity of a puzzle layout with two tests
 // first it checks that the right number of squares have been targeted to be placed in their subsections
@@ -202,14 +163,11 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
 
     let actualGridSize = 0
     let expectedGridSize = columnHeight * rowWidth
-    //(`Correct grid size: ${expectedGridSize}`)
 
     // first test - checking the number of targeted squares against the grid size
     for (let color in puzzle) {
         actualGridSize += puzzle[color].length
     }
-    //(`Actual size: ${actualGridSize}`)
-
 
     // second test - checking the sum of id numbers targeted
     // part-1 - add all the numbers for a given grid size
@@ -217,7 +175,6 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
     for (let i = 1; i <= expectedGridSize; i++) {
         expectedIDsum += i
     }
-    //(`Correct Value: ${expectedIDsum}`)
 
     // part-2 - add all the numbers that have been targeted for styling
     let actualIDsum = 0
@@ -226,23 +183,11 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
             actualIDsum += puzzle[color][i]
         }
     }
-    //(`Actual Value: ${actualIDsum}`)
-
 
     // logs whether or not the tests passed
     if (expectedIDsum === actualIDsum && expectedGridSize === actualGridSize) {
-    //('Right on the money')
-    }
-    else {
-    //(`You are ${expectedIDsum - actualIDsum} off`)
     }
 }
-
-
-
-
-
-
 
 module.exports = {
     layoutCheck,

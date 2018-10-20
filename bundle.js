@@ -19,19 +19,16 @@ const isStarAllowed = (element) => {
             if (itemToCheck.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 itemToCheck.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     itemToCheck.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
-                return false
+                }, 1000);
+                return false;
             }
         }
     }
-
-
 
     const currentColStart = 0
     const currentColEnd = colSize
@@ -44,18 +41,16 @@ const isStarAllowed = (element) => {
             if (itemToCheck.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 itemToCheck.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     itemToCheck.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
         }
     }
-
 
     // Check each item in a block for a star
     let color = `td.${element.classList[3]}`
@@ -64,111 +59,91 @@ const isStarAllowed = (element) => {
         if (colorblock[i].classList.contains('starred')) {
             element.classList.add('wrongAnswer')
             colorblock[i].classList.add('wrongAnswer')
-            setTimeout(function(){
+            setTimeout(function () {
                 colorblock[i].classList.remove('wrongAnswer');
-            },1000);
-            setTimeout(function(){
+            }, 1000);
+            setTimeout(function () {
                 element.classList.remove('wrongAnswer');
-            },1000);
-
+            }, 1000);
             return false
         }
     }
 
-
-
-
-
-  
     const topRight = document.getElementById(id - 7)
     const topLeft = document.getElementById(id - 9)
     const bottomLeft = document.getElementById(id + 7)
     const bottomRight = document.getElementById(id + 9)
-   
 
     // Check the four corners for a star
-    if(topRight !== null){
-    if (Number(topRight.classList[0][1]) === Number(element.classList[0][1]) - 1
-        && Number(topRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
+    if (topRight !== null) {
+        if (Number(topRight.classList[0][1]) === Number(element.classList[0][1]) - 1
+            && Number(topRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (topRight.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 topRight.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     topRight.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
 
-if(topLeft !== null){
-    if (Number(topLeft.classList[0][1]) === Number(element.classList[0][1]) - 1
-        && Number(topLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
+    if (topLeft !== null) {
+        if (Number(topLeft.classList[0][1]) === Number(element.classList[0][1]) - 1
+            && Number(topLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (topLeft.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 topLeft.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     topLeft.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
 
-
-if(bottomLeft !== null){
-    if (Number(bottomLeft.classList[0][1]) === Number(element.classList[0][1]) + 1
-        && Number(bottomLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
+    if (bottomLeft !== null) {
+        if (Number(bottomLeft.classList[0][1]) === Number(element.classList[0][1]) + 1
+            && Number(bottomLeft.classList[1][1]) === Number(element.classList[1][1]) - 1) {
             if (bottomLeft.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 bottomLeft.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     bottomLeft.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
 
-if(bottomRight !== null){
-    if (Number(bottomRight.classList[0][1]) === Number(element.classList[0][1]) + 1
-        && Number(bottomRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
+    if (bottomRight !== null) {
+        if (Number(bottomRight.classList[0][1]) === Number(element.classList[0][1]) + 1
+            && Number(bottomRight.classList[1][1]) === Number(element.classList[1][1]) + 1) {
             if (bottomRight.classList.contains('starred')) {
                 element.classList.add('wrongAnswer')
                 bottomRight.classList.add('wrongAnswer')
-                setTimeout(function(){
+                setTimeout(function () {
                     bottomRight.classList.remove('wrongAnswer');
-                },1000);
-                setTimeout(function(){
+                }, 1000);
+                setTimeout(function () {
                     element.classList.remove('wrongAnswer');
-                },1000);
-
+                }, 1000);
                 return false
             }
+        }
     }
-}
     return true
 }
-
-
-
-
-
-
-
-
 
 // function that reads the puzzle and applies style specified to naked grid
 let gridSubsectionBuilder = puzzle => {
@@ -180,20 +155,6 @@ let gridSubsectionBuilder = puzzle => {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // expects a puzzle object, and the height, and width of the tested puzzle
 // checks the validity of a puzzle layout with two tests
 // first it checks that the right number of squares have been targeted to be placed in their subsections
@@ -203,14 +164,11 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
 
     let actualGridSize = 0
     let expectedGridSize = columnHeight * rowWidth
-    //(`Correct grid size: ${expectedGridSize}`)
 
     // first test - checking the number of targeted squares against the grid size
     for (let color in puzzle) {
         actualGridSize += puzzle[color].length
     }
-    //(`Actual size: ${actualGridSize}`)
-
 
     // second test - checking the sum of id numbers targeted
     // part-1 - add all the numbers for a given grid size
@@ -218,7 +176,6 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
     for (let i = 1; i <= expectedGridSize; i++) {
         expectedIDsum += i
     }
-    //(`Correct Value: ${expectedIDsum}`)
 
     // part-2 - add all the numbers that have been targeted for styling
     let actualIDsum = 0
@@ -227,23 +184,11 @@ let layoutCheck = (puzzle, columnHeight, rowWidth) => {
             actualIDsum += puzzle[color][i]
         }
     }
-    //(`Actual Value: ${actualIDsum}`)
-
 
     // logs whether or not the tests passed
     if (expectedIDsum === actualIDsum && expectedGridSize === actualGridSize) {
-    //('Right on the money')
-    }
-    else {
-    //(`You are ${expectedIDsum - actualIDsum} off`)
     }
 }
-
-
-
-
-
-
 
 module.exports = {
     layoutCheck,
@@ -254,16 +199,12 @@ module.exports = {
 const { isStarAllowed, gridSubsectionBuilder } = require('./functions.js')
 const { puzzles } = require('./puzzles.js')
 
-
 let grid = clickableGrid(8, 8, function (element) {
-
-
 
     //  on click, check if box is starred
     //  if so remove star, no questions asked
     if (element.classList.contains('starred')) {
         element.classList.replace('starred', 'notStarred')
-
 
         // if  no star, check to see if it's a legal placement
         // if it is, add one
@@ -271,6 +212,7 @@ let grid = clickableGrid(8, 8, function (element) {
         if (isStarAllowed(element)) {
             element.classList.replace('notStarred', 'starred')
             if (document.querySelectorAll('td.starred').length === 8) {
+                setTimeout (function(){
                 switch (localStorage.getItem('gamesWon')) {
                     case '2':
                         localStorage.setItem('gamesWon', '0');
@@ -287,20 +229,12 @@ let grid = clickableGrid(8, 8, function (element) {
                         alert("That was the easy one, ready to step it up?")
                         window.location.reload();
                         break;
-                }
-            
-
-
-            // get complted puzzles
-            // if c
-            // add i - current puzzle
-            // generate new puzzle
+                    }
+                }, 800)
+            }
         }
     }
-}
 });
-
-
 
 // creates clickable grid as a table, appends it to the document body
 // rows and columns and cells start count from 1
@@ -323,34 +257,19 @@ function clickableGrid(rows, cols, callback) {
     }
     return grid;
 }
-
 document.body.appendChild(grid);
 
-// function randomPuzzle(max) {
-//     return Math.floor(Math.random() * Math.floor(max));
-// }
-
-
-// // i should equal the number of puzzles in puzzle file
-//let i = randomPuzzle(puzzles.length);
-
 let i = 0
-if(localStorage.getItem('gamesWon')){
+if (localStorage.getItem('gamesWon')) {
     i = localStorage.getItem('gamesWon');
-    i = Number(i); 
+    i = Number(i);
 }
-
+document.getElementById('level').innerHTML = `Level ${i + 1}`
 gridSubsectionBuilder(puzzles[i]);
-// for(let key in puzzles){
-//     for(let i = 0; i < puzzles.length; i++){
-//         console.log(puzzles[key][i])
-//     }
-// }
-
 },{"./functions.js":1,"./puzzles.js":3}],3:[function(require,module,exports){
 const { layoutCheck } = require('./functions.js')
 
-// credit: Thomas Snyder
+// layout credit: Thomas Snyder
 puzzleOne = {
     red: [1, 2, 9, 10],
     blue: [5, 6, 14, 22],
@@ -363,7 +282,7 @@ puzzleOne = {
         40, 41, 42, 43, 44, 47, 49, 51, 52, 54, 55, 60, 61, 62]
 }
 
-// credit: Thomas Snyder
+// layout credit: Thomas Snyder
 puzzleTwo = {
     red: [1, 2, 3, 4, 5, 6, 7, 15, 23, 31],
     blue: [8, 16, 24, 32, 40, 48, 56, 64, 63, 62, 61, 60, 59, 58, 57, 49, 41, 33, 25, 17, 9],
@@ -375,7 +294,7 @@ puzzleTwo = {
     grey: [29, 36, 37],
 }
 
-// credit: Thomas Snyder
+// layout credit: Thomas Snyder
 puzzleThree = {
     red: [7, 8, 12, 13, 14, 15, 20, 21, 22, 28, 34, 35, 36, 37, 45, 53],
     blue: [1, 2, 3, 4, 5, 6, 9, 10],
@@ -388,11 +307,6 @@ puzzleThree = {
 }
 
 let puzzles = [puzzleOne, puzzleTwo, puzzleThree];
-
-
-
-// the layoutCheck parameters are (puzzleName, heightOfPuzzle, widthOfPuzzle)
-// layoutCheck(puzzleThree, 8, 8)
 
 module.exports = {
     puzzles

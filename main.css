@@ -1,3 +1,21 @@
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+#instructions{
+    display:flex;
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 30px;
+}
+
+#level{
+    display: flex;
+    justify-content: center;
+}
+
 .grid td.notStarred {
     cursor:pointer;
     width:60px; height:60px;
@@ -8,50 +26,51 @@
     background-color: black;
 }
 
+/* earthworm jim inspired scheme */
 .grid td.red {
-    background-color: red;
+    background-color: #373f6d ;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 .grid td.blue {
-    background-color: blue;
+    background-color: #d04331;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 .grid td.cornflowerblue{
-    background-color: cornflowerblue;
+    background-color: #3f6035;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 .grid td.chartreuse{
-    background-color: chartreuse;
+    background-color: #a1a767;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 .grid td.darkmagenta{
-    background-color: darkmagenta;
+    background-color: #958327;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 .grid td.forestgreen{
-    background-color: forestgreen;
+    background-color: #d9818d;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
 
 .grid td.orange{
-    background-color: orange;
+    background-color: #b51b25;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
 }
     
 .grid td.grey{
-    background-color:grey;
+    background-color:#ef9120;
     color: black;
     -webkit-transition: all 0.3s linear;
     transition: all 0.3s linear;
