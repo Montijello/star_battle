@@ -2,7 +2,7 @@
 
 ### ABOUT THIS PROJECT
 
-Just a little puzzle game
+Just a little puzzle game.  
 Play online at http://starbattle.surge.sh/
 
 ### TO PLAY
